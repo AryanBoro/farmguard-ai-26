@@ -252,7 +252,17 @@ const ScanPage = () => {
             <div className="space-y-3 text-left">
               <GlassCard className="p-4 space-y-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider">Disease</p>
-                <p className="font-semibold text-foreground">{result.common_name || result.class_name || "Unknown"}</p>
+                <p className="font-semibold text-foreground">
+                  {(() => {
+                    const name = result.common_name || result.class_name || "Unknown";
+                    // Remove duplicate crop prefix e.g. "Tomato Tomato Mosaic Virus" → "Tomato Mosaic Virus"
+                    const words = name.split(" ");
+                    if (words.length > 1 && words[0].toLowerCase() === words[1].toLowerCase()) {
+                      return words.slice(1).join(" ");
+                    }
+                    return name;
+                  })()}
+                </p>
               </GlassCard>
               <GlassCard className="p-4 space-y-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider">Confidence</p>
