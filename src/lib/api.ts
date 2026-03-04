@@ -52,7 +52,23 @@ export async function predict(file: File, cropType: string, cropAge: string, loc
   form.append("crop_age", cropAge);
   form.append("location", location);
   const res = await fetch(`${BASE}/predict`, { method: "POST", body: form });
-  if (!res.ok) throw new Error("Prediction failed");
+  if (!res.ok) {
+    let message = `Prediction failed (${res.status})`;
+    try {
+      const err = await res.json();
+      console.error("Predict error:", err);
+      if (err.detail) {
+        if (Array.isArray(err.detail)) {
+          message = err.detail.map((d: any) => d.msg).join("; ");
+        } else {
+          message = String(err.detail);
+        }
+      }
+    } catch {
+      console.error("Predict error: could not parse response");
+    }
+    throw new Error(message);
+  }
   return res.json();
 }
 

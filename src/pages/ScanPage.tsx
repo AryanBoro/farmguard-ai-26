@@ -69,9 +69,9 @@ const ScanPage = () => {
       setProgress(100);
       setResult(res);
       setTimeout(() => setPhase("done"), 600);
-    } catch (err) {
+    } catch (err: any) {
       clearInterval(interval);
-      setError("Scan failed. Please try again.");
+      setError(err?.message || "Scan failed. Please try again.");
       setPhase("form");
       setProgress(0);
     }
@@ -175,10 +175,12 @@ const ScanPage = () => {
 
               <div className="space-y-2">
                 <Label className="text-foreground flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-primary" /> Crop Age
+                  <Calendar className="w-4 h-4 text-primary" /> Crop Age (days)
                 </Label>
                 <Input
-                  placeholder="e.g., 3 months"
+                  type="number"
+                  min="1"
+                  placeholder="e.g., 90"
                   value={cropAge}
                   onChange={(e) => setCropAge(e.target.value)}
                   className="glass border-0 text-foreground placeholder:text-muted-foreground"
