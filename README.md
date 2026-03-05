@@ -24,10 +24,13 @@ https://borreooo-farmguard-ai.hf.space
 ---
 
 ## Screenshots
-
-![Home](./screenshots/home.png)
-![Scan](./screenshots/scan.png)
-![Dashboard](./screenshots/dashboard.png)
+![apple black rot](https://github.com/user-attachments/assets/996dc74c-0066-45e4-8f14-dc612e174824)
+![squash powdery mildew](https://github.com/user-attachments/assets/4f7079ba-16ab-4f4e-8a87-577dd961b483)
+![potato early blight](https://github.com/user-attachments/assets/f34138e2-b692-4a8b-9d2d-cd6f3c4ee3bc)
+![strawberry leaf scorch](https://github.com/user-attachments/assets/b38937be-ab3a-4844-88eb-08eece770d07)
+![healthy strawberry](https://github.com/user-attachments/assets/5e3a3c7a-96b6-4f3a-8609-083d41c2ef42)
+![tomatohealthy](https://github.com/user-attachments/assets/14337013-ce38-4810-bc6d-73c052521c90)
+![pepper bacterial spot](https://github.com/user-attachments/assets/4228a404-5a4c-44bc-ad17-46a273e7edb7)
 
 ## Features
 
