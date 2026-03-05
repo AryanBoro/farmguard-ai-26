@@ -1,9 +1,27 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Search, ExternalLink } from "lucide-react";
+import { ArrowLeft, Search, ExternalLink, Download } from "lucide-react";
 import AnimatedShaderBackground from "@/components/ui/animated-shader-background";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Button } from "@/components/ui/button";
+
+import appleBlackRot from "@/assets/samples/apple-black-rot.webp";
+import healthyStrawberry from "@/assets/samples/healthy-strawberry.webp";
+import pepperBacterialSpot from "@/assets/samples/pepper-bacterial-spot.webp";
+import potatoEarlyBlight from "@/assets/samples/potato-early-blight.webp";
+import squashPowderyMildew from "@/assets/samples/squash-powdery-mildew.webp";
+import strawberryLeafScorch from "@/assets/samples/strawberry-leaf-scorch.webp";
+import tomatoHealthy from "@/assets/samples/tomato-healthy.webp";
+
+const SAMPLE_IMAGES = [
+  { src: appleBlackRot, label: "Apple Black Rot", crop: "Apple" },
+  { src: healthyStrawberry, label: "Healthy Strawberry", crop: "Strawberry" },
+  { src: pepperBacterialSpot, label: "Pepper Bacterial Spot", crop: "Pepper" },
+  { src: potatoEarlyBlight, label: "Potato Early Blight", crop: "Potato" },
+  { src: squashPowderyMildew, label: "Squash Powdery Mildew", crop: "Squash" },
+  { src: strawberryLeafScorch, label: "Strawberry Leaf Scorch", crop: "Strawberry" },
+  { src: tomatoHealthy, label: "Tomato Healthy", crop: "Tomato" },
+];
 
 const CROP_DATA = [
   {
@@ -115,10 +133,10 @@ const TestingGuidePage = () => {
           <h2 className="text-lg font-semibold text-foreground mb-4">How to Test</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { step: "1", text: "Pick a crop below" },
-              { step: "2", text: 'Click "Search Sample Image"' },
-              { step: "3", text: "Save any image from Google" },
-              { step: "4", text: "Go to Scan page and upload it" },
+              { step: "1", text: "Right-click a sample image below and save it" },
+              { step: "2", text: "Or pick a crop card and search Google Images" },
+              { step: "3", text: "Go to the Scan page" },
+              { step: "4", text: "Upload the saved image and scan!" },
             ].map((s) => (
               <div key={s.step} className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">
@@ -129,6 +147,27 @@ const TestingGuidePage = () => {
             ))}
           </div>
         </GlassCard>
+
+        {/* Sample Images */}
+        <div className="mb-10">
+          <h2 className="text-2xl font-bold text-foreground mb-2">Use Sample Images</h2>
+          <p className="text-sm text-muted-foreground mb-5">Right-click any image → "Save image as" → then upload it on the Scan page</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {SAMPLE_IMAGES.map((img) => (
+              <GlassCard key={img.label} className="overflow-hidden">
+                <img
+                  src={img.src}
+                  alt={img.label}
+                  className="w-full h-36 object-cover"
+                />
+                <div className="p-3 space-y-1">
+                  <p className="text-sm font-semibold text-foreground">{img.label}</p>
+                  <p className="text-xs text-muted-foreground">{img.crop}</p>
+                </div>
+              </GlassCard>
+            ))}
+          </div>
+        </div>
 
         {/* Crop Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
