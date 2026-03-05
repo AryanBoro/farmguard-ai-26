@@ -23,6 +23,12 @@ https://borreooo-farmguard-ai.hf.space
 
 ---
 
+## Screenshots
+
+![Home](./screenshots/home.png)
+![Scan](./screenshots/scan.png)
+![Dashboard](./screenshots/dashboard.png)
+
 ## Features
 
 - 🔍 **Scan** — Upload a leaf image, select crop type, get instant disease diagnosis
