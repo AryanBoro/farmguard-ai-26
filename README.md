@@ -100,7 +100,7 @@ All data is fetched from the live backend. Zero mock data.
 
 Deployed on **Vercel**. Every push to `main` triggers an automatic redeploy.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AryanBoro/farmguard-ai-frontend)
+[![Deploy with Vercel](https://vercel.com/button)](https://farmguard-ai-frontend.vercel.app/)
 
 ---
 
