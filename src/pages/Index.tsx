@@ -67,9 +67,18 @@ const Index = () => {
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background z-[1]" />
 
-      {/* Top nav removed - testing button moved to CTA section */}
+      {/* Testing Guide - corner button */}
+      <div className="relative z-[2] flex justify-end px-4 sm:px-6 lg:px-8 pt-6">
+        <button
+          onClick={() => navigate("/testing")}
+          className="inline-flex items-center gap-2 glass text-foreground px-4 py-2 rounded-full text-sm font-medium hover:bg-[hsla(220,15%,15%,0.6)] transition-all border border-primary/30"
+        >
+          <Sprout className="w-4 h-4 text-primary" />
+          Testing Guide
+        </button>
+      </div>
 
-      <div className="relative z-[2] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+      <div className="relative z-[2] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           {/* LEFT COLUMN */}
           <div className="space-y-8">
@@ -115,12 +124,6 @@ const Index = () => {
                 View Dashboard
               </button>
 
-              <button
-                onClick={() => navigate("/testing")}
-                className="inline-flex items-center gap-2 glass text-foreground px-6 py-3.5 rounded-full font-semibold hover:bg-[hsla(220,15%,15%,0.6)] transition-all border border-primary/30"
-              >
-                🧪 Testing Guide
-              </button>
             </div>
           </div>
 
