@@ -19,8 +19,8 @@ const Index: React.FC = () => {
       {/* Cinematic GSAP Hero (pinned scroll section) */}
       <div className="relative z-[2]">
         <CinematicHero
-          tagline1="Protect your crops,"
-          tagline2="not just your hopes."
+          tagline1="Your crop doctor,"
+          tagline2="in your pocket."
           cardHeading="Intelligence, in the field."
           cardDescription={
             <>
