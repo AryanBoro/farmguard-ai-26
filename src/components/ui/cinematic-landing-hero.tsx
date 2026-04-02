@@ -330,10 +330,10 @@ export function CinematicHero({
       <div className="film-grain" />
 
       {/* ===== HERO TEXT (fades on scroll) ===== */}
-      <div className="hero-text-wrapper absolute inset-0 z-10 flex flex-col items-center justify-center px-4">
-        <div className="text-center space-y-2">
+      <div className="hero-text-wrapper absolute inset-0 z-10 flex flex-col items-center justify-center px-6 sm:px-4">
+        <div className="text-center space-y-3 sm:space-y-2">
           {/* Brand badge */}
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full px-4 py-2"
+          <div className="mb-6 sm:mb-8 inline-flex items-center gap-2 rounded-full px-4 py-2"
             style={{
               background: "linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(34,197,94,0.02) 100%)",
               border: "1px solid rgba(34,197,94,0.15)",
@@ -344,13 +344,13 @@ export function CinematicHero({
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: "hsl(160,80%,45%)" }} />
               <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: "hsl(160,80%,45%)" }} />
             </span>
-            <span className="text-sm font-semibold tracking-wide" style={{ color: "hsl(160,80%,45%)" }}>FARMGUARD AI</span>
+            <span className="text-xs sm:text-sm font-semibold tracking-wide" style={{ color: "hsl(160,80%,45%)" }}>FARMGUARD AI</span>
           </div>
 
-          <h1 className="text-track text-silver-matte text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.85]">
+          <h1 className="text-track text-silver-matte text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.9]">
             {tagline1}
           </h1>
-          <h1 className="text-days text-silver-matte text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.85]">
+          <h1 className="text-days text-silver-matte text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.9]">
             {tagline2}
           </h1>
         </div>
