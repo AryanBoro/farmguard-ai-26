@@ -111,8 +111,8 @@ const TestingSection: React.FC<TestingSectionProps> = ({ onScan }) => {
               { step: "2", text: "Go to the Scan page" },
               { step: "3", text: "Upload the image and scan!" },
             ].map((s, i) => (
-              <div key={s.step} className="flex items-center gap-3">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+              <div key={s.step} className="flex items-center gap-2 sm:gap-3">
+                <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm sm:text-base">
                   {s.step}
                 </div>
                 <p className="text-sm text-foreground font-medium">{s.text}</p>
