@@ -223,6 +223,7 @@ export function CinematicHero({
   // GSAP Cinematic Scroll Timeline
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
 
     const ctx = gsap.context(() => {
       // Initial states
@@ -238,12 +239,12 @@ export function CinematicHero({
         .to(".text-track", { duration: 1.8, autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", rotationX: 0, ease: "expo.out" })
         .to(".text-days", { duration: 1.4, clipPath: "inset(0 0% 0 0)", ease: "power4.inOut" }, "-=1.0");
 
-      // Scroll timeline
+      // Scroll timeline — shorter on mobile
       const scrollTl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=7000",
+          end: isMobile ? "+=4500" : "+=7000",
           pin: true,
           scrub: 1,
           anticipatePin: 1,
@@ -260,7 +261,7 @@ export function CinematicHero({
 
         // Bring in phone mockup with dramatic 3D entrance
         .fromTo(".mockup-scroll-wrapper",
-          { y: 300, z: -500, rotationX: 50, rotationY: -30, autoAlpha: 0, scale: 0.6 },
+          { y: 300, z: -500, rotationX: isMobile ? 20 : 50, rotationY: isMobile ? -10 : -30, autoAlpha: 0, scale: 0.6 },
           { y: 0, z: 0, rotationX: 0, rotationY: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 2.5 },
           "-=0.8"
         )
@@ -276,19 +277,19 @@ export function CinematicHero({
         .to(".progress-ring", { strokeDashoffset: 60, duration: 2, ease: "power3.inOut" }, "-=1.2")
         .to(".counter-val", { innerHTML: metricValue, snap: { innerHTML: 1 }, duration: 2, ease: "expo.out" }, "-=2.0")
 
-        // Floating badges fly in
+        // Floating badges fly in (skip on very small screens)
         .fromTo(".floating-badge",
           { y: 100, autoAlpha: 0, scale: 0.7, rotationZ: -10 },
-          { y: 0, autoAlpha: 1, scale: 1, rotationZ: 0, ease: "back.out(1.5)", duration: 1.5, stagger: 0.2 },
+          { y: 0, autoAlpha: isMobile ? 0 : 1, scale: 1, rotationZ: 0, ease: "back.out(1.5)", duration: 1.5, stagger: 0.2 },
           "-=2.0"
         )
 
         // Card text slides in
-        .fromTo(".card-left-text", { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1, ease: "power4.out", duration: 1.5 }, "-=1.5")
+        .fromTo(".card-left-text", { x: isMobile ? 0 : -50, y: isMobile ? 30 : 0, autoAlpha: 0 }, { x: 0, y: 0, autoAlpha: 1, ease: "power4.out", duration: 1.5 }, "-=1.5")
         .fromTo(".card-right-text", { x: 50, autoAlpha: 0, scale: 0.8 }, { x: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 1.5 }, "<")
 
         // Pause to let user absorb
-        .to({}, { duration: 2.5 })
+        .to({}, { duration: isMobile ? 1.5 : 2.5 })
 
         // Transition to CTA
         .set(".hero-text-wrapper", { autoAlpha: 0 })
@@ -302,9 +303,9 @@ export function CinematicHero({
 
         // Card shrinks back with CTA
         .to(".main-card", {
-          width: isMobile ? "92vw" : "85vw",
-          height: isMobile ? "92vh" : "85vh",
-          borderRadius: isMobile ? "32px" : "40px",
+          width: isMobile ? "96vw" : isTablet ? "92vw" : "85vw",
+          height: isMobile ? "96vh" : isTablet ? "92vh" : "85vh",
+          borderRadius: isMobile ? "24px" : isTablet ? "32px" : "40px",
           ease: "expo.inOut",
           duration: 1.8,
         }, "pullback")
