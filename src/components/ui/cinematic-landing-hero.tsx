@@ -464,8 +464,8 @@ export function CinematicHero({
             </div>
           </div>
 
-          {/* RIGHT TEXT */}
-          <div className="card-right-text absolute right-6 sm:right-12 top-1/2 -translate-y-1/2 z-30 hidden md:block max-w-xs space-y-6">
+          {/* RIGHT TEXT — hidden on mobile & tablet */}
+          <div className="card-right-text absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 z-30 hidden lg:block max-w-xs space-y-6">
             <div className="space-y-2">
               <p className="text-zinc-500 text-xs uppercase tracking-widest font-semibold">Powered by</p>
               <p className="text-white text-lg font-bold">Deep Learning</p>
