@@ -65,9 +65,9 @@ const TestingSection: React.FC<TestingSectionProps> = ({ onScan }) => {
     <section
       id="testing-guide"
       ref={sectionRef}
-      className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8"
+      className="relative py-16 sm:py-24 lg:py-32 px-3 sm:px-6 lg:px-8"
     >
-      <div className="max-w-6xl mx-auto space-y-16">
+      <div className="max-w-6xl mx-auto space-y-10 sm:space-y-16">
         {/* Header */}
         <div className="text-center space-y-4">
           <motion.p
@@ -79,7 +79,7 @@ const TestingSection: React.FC<TestingSectionProps> = ({ onScan }) => {
             Testing Guide
           </motion.p>
           <motion.h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-foreground tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight"
             initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
             animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
@@ -99,20 +99,20 @@ const TestingSection: React.FC<TestingSectionProps> = ({ onScan }) => {
 
         {/* Steps */}
         <motion.div
-          className="glass-strong rounded-2xl p-6 sm:p-8 glass-glow"
+          className="glass-strong rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 glass-glow"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <h3 className="text-lg font-bold text-foreground mb-6">How to Test</h3>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:justify-between">
+          <h3 className="text-base sm:text-lg font-bold text-foreground mb-4 sm:mb-6">How to Test</h3>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 sm:justify-between">
             {[
               { step: "1", text: "Click a sample image to download it" },
               { step: "2", text: "Go to the Scan page" },
               { step: "3", text: "Upload the image and scan!" },
             ].map((s, i) => (
-              <div key={s.step} className="flex items-center gap-3">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+              <div key={s.step} className="flex items-center gap-2 sm:gap-3">
+                <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm sm:text-base">
                   {s.step}
                 </div>
                 <p className="text-sm text-foreground font-medium">{s.text}</p>
@@ -130,7 +130,7 @@ const TestingSection: React.FC<TestingSectionProps> = ({ onScan }) => {
           <p className="text-sm text-muted-foreground mb-6">
             Click any image to download it
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
             {SAMPLE_IMAGES.map((img, i) => (
               <motion.div
                 key={img.label}
@@ -149,7 +149,7 @@ const TestingSection: React.FC<TestingSectionProps> = ({ onScan }) => {
                   <img
                     src={img.src}
                     alt={img.label}
-                    className="w-full h-36 object-cover"
+                    className="w-full h-28 sm:h-36 object-cover"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -168,7 +168,7 @@ const TestingSection: React.FC<TestingSectionProps> = ({ onScan }) => {
         {/* Supported Crops */}
         <div>
           <h3 className="text-2xl font-bold text-foreground mb-6">Supported Crops & Diseases</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {CROP_DATA.map((crop, i) => (
               <motion.div
                 key={crop.name}

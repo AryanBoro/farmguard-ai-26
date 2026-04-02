@@ -223,6 +223,7 @@ export function CinematicHero({
   // GSAP Cinematic Scroll Timeline
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
 
     const ctx = gsap.context(() => {
       // Initial states
@@ -238,12 +239,12 @@ export function CinematicHero({
         .to(".text-track", { duration: 1.8, autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", rotationX: 0, ease: "expo.out" })
         .to(".text-days", { duration: 1.4, clipPath: "inset(0 0% 0 0)", ease: "power4.inOut" }, "-=1.0");
 
-      // Scroll timeline
+      // Scroll timeline — shorter on mobile
       const scrollTl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=7000",
+          end: isMobile ? "+=4500" : "+=7000",
           pin: true,
           scrub: 1,
           anticipatePin: 1,
@@ -260,7 +261,7 @@ export function CinematicHero({
 
         // Bring in phone mockup with dramatic 3D entrance
         .fromTo(".mockup-scroll-wrapper",
-          { y: 300, z: -500, rotationX: 50, rotationY: -30, autoAlpha: 0, scale: 0.6 },
+          { y: 300, z: -500, rotationX: isMobile ? 20 : 50, rotationY: isMobile ? -10 : -30, autoAlpha: 0, scale: 0.6 },
           { y: 0, z: 0, rotationX: 0, rotationY: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 2.5 },
           "-=0.8"
         )
@@ -276,19 +277,19 @@ export function CinematicHero({
         .to(".progress-ring", { strokeDashoffset: 60, duration: 2, ease: "power3.inOut" }, "-=1.2")
         .to(".counter-val", { innerHTML: metricValue, snap: { innerHTML: 1 }, duration: 2, ease: "expo.out" }, "-=2.0")
 
-        // Floating badges fly in
+        // Floating badges fly in (skip on very small screens)
         .fromTo(".floating-badge",
           { y: 100, autoAlpha: 0, scale: 0.7, rotationZ: -10 },
-          { y: 0, autoAlpha: 1, scale: 1, rotationZ: 0, ease: "back.out(1.5)", duration: 1.5, stagger: 0.2 },
+          { y: 0, autoAlpha: isMobile ? 0 : 1, scale: 1, rotationZ: 0, ease: "back.out(1.5)", duration: 1.5, stagger: 0.2 },
           "-=2.0"
         )
 
         // Card text slides in
-        .fromTo(".card-left-text", { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1, ease: "power4.out", duration: 1.5 }, "-=1.5")
+        .fromTo(".card-left-text", { x: isMobile ? 0 : -50, y: isMobile ? 30 : 0, autoAlpha: 0 }, { x: 0, y: 0, autoAlpha: 1, ease: "power4.out", duration: 1.5 }, "-=1.5")
         .fromTo(".card-right-text", { x: 50, autoAlpha: 0, scale: 0.8 }, { x: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 1.5 }, "<")
 
         // Pause to let user absorb
-        .to({}, { duration: 2.5 })
+        .to({}, { duration: isMobile ? 1.5 : 2.5 })
 
         // Transition to CTA
         .set(".hero-text-wrapper", { autoAlpha: 0 })
@@ -302,9 +303,9 @@ export function CinematicHero({
 
         // Card shrinks back with CTA
         .to(".main-card", {
-          width: isMobile ? "92vw" : "85vw",
-          height: isMobile ? "92vh" : "85vh",
-          borderRadius: isMobile ? "32px" : "40px",
+          width: isMobile ? "96vw" : isTablet ? "92vw" : "85vw",
+          height: isMobile ? "96vh" : isTablet ? "92vh" : "85vh",
+          borderRadius: isMobile ? "24px" : isTablet ? "32px" : "40px",
           ease: "expo.inOut",
           duration: 1.8,
         }, "pullback")
@@ -346,10 +347,10 @@ export function CinematicHero({
             <span className="text-sm font-semibold tracking-wide" style={{ color: "hsl(160,80%,45%)" }}>FARMGUARD AI</span>
           </div>
 
-          <h1 className="text-track text-silver-matte text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85]">
+          <h1 className="text-track text-silver-matte text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.85]">
             {tagline1}
           </h1>
-          <h1 className="text-days text-silver-matte text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85]">
+          <h1 className="text-days text-silver-matte text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.85]">
             {tagline2}
           </h1>
         </div>
@@ -359,26 +360,26 @@ export function CinematicHero({
       <div
         ref={mainCardRef}
         className="main-card premium-depth-card absolute bottom-0 left-1/2 -translate-x-1/2 z-20 overflow-hidden"
-        style={{ width: "85vw", height: "85vh", borderRadius: "40px" }}
+        style={{ width: "min(85vw, 96vw)", height: "min(85vh, 96vh)", borderRadius: "clamp(24px, 4vw, 40px)" }}
       >
         <div className="card-sheen" />
 
         {/* Card inner content */}
         <div className="relative w-full h-full flex items-center justify-center" style={{ perspective: "1200px" }}>
 
-          {/* LEFT TEXT */}
-          <div className="card-left-text absolute left-6 sm:left-12 top-1/2 -translate-y-1/2 z-30 max-w-xs sm:max-w-sm space-y-4">
-            <h2 className="text-card-silver-matte text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[0.9]">
+          {/* LEFT TEXT — repositioned on mobile to bottom */}
+          <div className="card-left-text absolute left-4 right-4 bottom-4 sm:bottom-auto sm:right-auto sm:left-6 md:left-12 sm:top-1/2 sm:-translate-y-1/2 z-30 max-w-xs sm:max-w-sm space-y-2 sm:space-y-4">
+            <h2 className="text-card-silver-matte text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[0.9]">
               {cardHeading}
             </h2>
-            <p className="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-[280px]">
+            <p className="text-zinc-400 text-xs sm:text-sm md:text-base leading-relaxed max-w-[280px] hidden sm:block">
               {cardDescription}
             </p>
           </div>
 
-          {/* PHONE MOCKUP */}
+          {/* PHONE MOCKUP — smaller on mobile */}
           <div className="mockup-scroll-wrapper relative z-20" ref={mockupRef}>
-            <div className="iphone-bezel rounded-[50px] p-[8px] relative" style={{ width: "280px", height: "560px" }}>
+            <div className="iphone-bezel rounded-[40px] sm:rounded-[50px] p-[6px] sm:p-[8px] relative w-[200px] h-[400px] sm:w-[240px] sm:h-[480px] md:w-[280px] md:h-[560px]">
               {/* Hardware buttons */}
               <div className="hardware-btn absolute right-[-4px] top-[120px] w-[4px] h-[70px] rounded-r-[2px]" />
               <div className="hardware-btn absolute right-[-4px] top-[200px] w-[4px] h-[40px] rounded-r-[2px]" />
@@ -463,8 +464,8 @@ export function CinematicHero({
             </div>
           </div>
 
-          {/* RIGHT TEXT */}
-          <div className="card-right-text absolute right-6 sm:right-12 top-1/2 -translate-y-1/2 z-30 hidden md:block max-w-xs space-y-6">
+          {/* RIGHT TEXT — hidden on mobile & tablet */}
+          <div className="card-right-text absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 z-30 hidden lg:block max-w-xs space-y-6">
             <div className="space-y-2">
               <p className="text-zinc-500 text-xs uppercase tracking-widest font-semibold">Powered by</p>
               <p className="text-white text-lg font-bold">Deep Learning</p>
@@ -485,20 +486,20 @@ export function CinematicHero({
             </div>
           </div>
 
-          {/* FLOATING BADGES */}
-          <div className="floating-badge floating-ui-badge absolute top-8 right-8 sm:top-12 sm:right-16 z-30 rounded-2xl px-5 py-3 flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "hsla(160,80%,45%,0.15)" }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(160,80%,45%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          {/* FLOATING BADGES — hidden on mobile */}
+          <div className="floating-badge floating-ui-badge absolute top-4 right-4 sm:top-8 sm:right-8 md:top-12 md:right-16 z-30 rounded-xl sm:rounded-2xl px-3 py-2 sm:px-5 sm:py-3 hidden sm:flex items-center gap-2 sm:gap-3">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center" style={{ background: "hsla(160,80%,45%,0.15)" }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(160,80%,45%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
               </svg>
             </div>
             <div>
-              <p className="text-white text-xs font-bold">Live Analysis</p>
-              <p className="text-zinc-500 text-[10px]">Real-time detection</p>
+              <p className="text-white text-[10px] sm:text-xs font-bold">Live Analysis</p>
+              <p className="text-zinc-500 text-[8px] sm:text-[10px]">Real-time detection</p>
             </div>
           </div>
 
-          <div className="floating-badge floating-ui-badge absolute bottom-8 left-8 sm:bottom-12 sm:left-16 z-30 rounded-2xl px-5 py-3 flex items-center gap-3">
+          <div className="floating-badge floating-ui-badge absolute bottom-4 left-4 sm:bottom-8 sm:left-8 md:bottom-12 md:left-16 z-30 rounded-xl sm:rounded-2xl px-3 py-2 sm:px-5 sm:py-3 hidden sm:flex items-center gap-2 sm:gap-3">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "hsla(160,80%,45%,0.15)" }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(160,80%,45%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -511,25 +512,25 @@ export function CinematicHero({
           </div>
 
           {/* CTA WRAPPER (appears after card content fades) */}
-          <div className="cta-wrapper absolute inset-0 z-40 flex flex-col items-center justify-center px-6 text-center">
-            <h2 className="text-card-silver-matte text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.85] mb-6">
+          <div className="cta-wrapper absolute inset-0 z-40 flex flex-col items-center justify-center px-4 sm:px-6 text-center">
+            <h2 className="text-card-silver-matte text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[0.85] mb-4 sm:mb-6">
               {ctaHeading}
             </h2>
-            <p className="text-zinc-400 text-base sm:text-lg max-w-xl leading-relaxed mb-10">
+            <p className="text-zinc-400 text-sm sm:text-base md:text-lg max-w-xl leading-relaxed mb-6 sm:mb-10">
               {ctaDescription}
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <button className="btn-modern-light rounded-full px-8 py-4 text-base font-bold flex items-center gap-2" onClick={onScanClick}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full sm:w-auto">
+              <button className="btn-modern-light rounded-full px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-bold flex items-center justify-center gap-2" onClick={onScanClick}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s1.5 2.5 0 6c-1.5 3.5-3 4.5-3 4.5" />
                   <path d="M15.5 12.5c1-1 2.5-3 2.5-5" />
                 </svg>
                 Scan Your Crop
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </button>
-              <button className="btn-modern-dark rounded-full px-8 py-4 text-base font-bold flex items-center gap-2" onClick={onDashboardClick}>
+              <button className="btn-modern-dark rounded-full px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-bold flex items-center justify-center gap-2" onClick={onDashboardClick}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" />
                 </svg>
