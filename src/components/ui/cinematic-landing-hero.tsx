@@ -360,7 +360,7 @@ export function CinematicHero({
       <div
         ref={mainCardRef}
         className="main-card premium-depth-card absolute bottom-0 left-1/2 -translate-x-1/2 z-20 overflow-hidden"
-        style={{ width: "85vw", height: "85vh", borderRadius: "40px" }}
+        style={{ width: "min(85vw, 96vw)", height: "min(85vh, 96vh)", borderRadius: "clamp(24px, 4vw, 40px)" }}
       >
         <div className="card-sheen" />
 
