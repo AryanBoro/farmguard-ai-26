@@ -486,20 +486,20 @@ export function CinematicHero({
             </div>
           </div>
 
-          {/* FLOATING BADGES */}
-          <div className="floating-badge floating-ui-badge absolute top-8 right-8 sm:top-12 sm:right-16 z-30 rounded-2xl px-5 py-3 flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "hsla(160,80%,45%,0.15)" }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(160,80%,45%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          {/* FLOATING BADGES — hidden on mobile */}
+          <div className="floating-badge floating-ui-badge absolute top-4 right-4 sm:top-8 sm:right-8 md:top-12 md:right-16 z-30 rounded-xl sm:rounded-2xl px-3 py-2 sm:px-5 sm:py-3 hidden sm:flex items-center gap-2 sm:gap-3">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center" style={{ background: "hsla(160,80%,45%,0.15)" }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(160,80%,45%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
               </svg>
             </div>
             <div>
-              <p className="text-white text-xs font-bold">Live Analysis</p>
-              <p className="text-zinc-500 text-[10px]">Real-time detection</p>
+              <p className="text-white text-[10px] sm:text-xs font-bold">Live Analysis</p>
+              <p className="text-zinc-500 text-[8px] sm:text-[10px]">Real-time detection</p>
             </div>
           </div>
 
-          <div className="floating-badge floating-ui-badge absolute bottom-8 left-8 sm:bottom-12 sm:left-16 z-30 rounded-2xl px-5 py-3 flex items-center gap-3">
+          <div className="floating-badge floating-ui-badge absolute bottom-4 left-4 sm:bottom-8 sm:left-8 md:bottom-12 md:left-16 z-30 rounded-xl sm:rounded-2xl px-3 py-2 sm:px-5 sm:py-3 hidden sm:flex items-center gap-2 sm:gap-3">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "hsla(160,80%,45%,0.15)" }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(160,80%,45%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
