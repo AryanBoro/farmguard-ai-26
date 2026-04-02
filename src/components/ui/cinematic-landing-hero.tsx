@@ -347,10 +347,10 @@ export function CinematicHero({
             <span className="text-sm font-semibold tracking-wide" style={{ color: "hsl(160,80%,45%)" }}>FARMGUARD AI</span>
           </div>
 
-          <h1 className="text-track text-silver-matte text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85]">
+          <h1 className="text-track text-silver-matte text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.85]">
             {tagline1}
           </h1>
-          <h1 className="text-days text-silver-matte text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85]">
+          <h1 className="text-days text-silver-matte text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.85]">
             {tagline2}
           </h1>
         </div>
