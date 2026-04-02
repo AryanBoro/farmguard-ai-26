@@ -168,7 +168,7 @@ const TestingSection: React.FC<TestingSectionProps> = ({ onScan }) => {
         {/* Supported Crops */}
         <div>
           <h3 className="text-2xl font-bold text-foreground mb-6">Supported Crops & Diseases</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {CROP_DATA.map((crop, i) => (
               <motion.div
                 key={crop.name}
