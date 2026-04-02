@@ -65,7 +65,7 @@ const TestingSection: React.FC<TestingSectionProps> = ({ onScan }) => {
     <section
       id="testing-guide"
       ref={sectionRef}
-      className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8"
+      className="relative py-16 sm:py-24 lg:py-32 px-3 sm:px-6 lg:px-8"
     >
       <div className="max-w-6xl mx-auto space-y-16">
         {/* Header */}
