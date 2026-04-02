@@ -367,12 +367,12 @@ export function CinematicHero({
         {/* Card inner content */}
         <div className="relative w-full h-full flex items-center justify-center" style={{ perspective: "1200px" }}>
 
-          {/* LEFT TEXT */}
-          <div className="card-left-text absolute left-6 sm:left-12 top-1/2 -translate-y-1/2 z-30 max-w-xs sm:max-w-sm space-y-4">
-            <h2 className="text-card-silver-matte text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[0.9]">
+          {/* LEFT TEXT — repositioned on mobile to bottom */}
+          <div className="card-left-text absolute left-4 right-4 bottom-4 sm:bottom-auto sm:right-auto sm:left-6 md:left-12 sm:top-1/2 sm:-translate-y-1/2 z-30 max-w-xs sm:max-w-sm space-y-2 sm:space-y-4">
+            <h2 className="text-card-silver-matte text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[0.9]">
               {cardHeading}
             </h2>
-            <p className="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-[280px]">
+            <p className="text-zinc-400 text-xs sm:text-sm md:text-base leading-relaxed max-w-[280px] hidden sm:block">
               {cardDescription}
             </p>
           </div>
