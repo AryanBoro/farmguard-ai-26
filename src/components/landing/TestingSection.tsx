@@ -104,8 +104,8 @@ const TestingSection: React.FC<TestingSectionProps> = ({ onScan }) => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <h3 className="text-lg font-bold text-foreground mb-6">How to Test</h3>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:justify-between">
+          <h3 className="text-base sm:text-lg font-bold text-foreground mb-4 sm:mb-6">How to Test</h3>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 sm:justify-between">
             {[
               { step: "1", text: "Click a sample image to download it" },
               { step: "2", text: "Go to the Scan page" },
