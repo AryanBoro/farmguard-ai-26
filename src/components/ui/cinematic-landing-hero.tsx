@@ -377,9 +377,9 @@ export function CinematicHero({
             </p>
           </div>
 
-          {/* PHONE MOCKUP */}
+          {/* PHONE MOCKUP — smaller on mobile */}
           <div className="mockup-scroll-wrapper relative z-20" ref={mockupRef}>
-            <div className="iphone-bezel rounded-[50px] p-[8px] relative" style={{ width: "280px", height: "560px" }}>
+            <div className="iphone-bezel rounded-[40px] sm:rounded-[50px] p-[6px] sm:p-[8px] relative w-[200px] h-[400px] sm:w-[240px] sm:h-[480px] md:w-[280px] md:h-[560px]">
               {/* Hardware buttons */}
               <div className="hardware-btn absolute right-[-4px] top-[120px] w-[4px] h-[70px] rounded-r-[2px]" />
               <div className="hardware-btn absolute right-[-4px] top-[200px] w-[4px] h-[40px] rounded-r-[2px]" />
