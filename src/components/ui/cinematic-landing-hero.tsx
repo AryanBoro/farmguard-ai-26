@@ -512,25 +512,25 @@ export function CinematicHero({
           </div>
 
           {/* CTA WRAPPER (appears after card content fades) */}
-          <div className="cta-wrapper absolute inset-0 z-40 flex flex-col items-center justify-center px-6 text-center">
-            <h2 className="text-card-silver-matte text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.85] mb-6">
+          <div className="cta-wrapper absolute inset-0 z-40 flex flex-col items-center justify-center px-4 sm:px-6 text-center">
+            <h2 className="text-card-silver-matte text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[0.85] mb-4 sm:mb-6">
               {ctaHeading}
             </h2>
-            <p className="text-zinc-400 text-base sm:text-lg max-w-xl leading-relaxed mb-10">
+            <p className="text-zinc-400 text-sm sm:text-base md:text-lg max-w-xl leading-relaxed mb-6 sm:mb-10">
               {ctaDescription}
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <button className="btn-modern-light rounded-full px-8 py-4 text-base font-bold flex items-center gap-2" onClick={onScanClick}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full sm:w-auto">
+              <button className="btn-modern-light rounded-full px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-bold flex items-center justify-center gap-2" onClick={onScanClick}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s1.5 2.5 0 6c-1.5 3.5-3 4.5-3 4.5" />
                   <path d="M15.5 12.5c1-1 2.5-3 2.5-5" />
                 </svg>
                 Scan Your Crop
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </button>
-              <button className="btn-modern-dark rounded-full px-8 py-4 text-base font-bold flex items-center gap-2" onClick={onDashboardClick}>
+              <button className="btn-modern-dark rounded-full px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-bold flex items-center justify-center gap-2" onClick={onDashboardClick}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" />
                 </svg>
