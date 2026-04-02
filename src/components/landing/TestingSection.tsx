@@ -130,7 +130,7 @@ const TestingSection: React.FC<TestingSectionProps> = ({ onScan }) => {
           <p className="text-sm text-muted-foreground mb-6">
             Click any image to download it
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
             {SAMPLE_IMAGES.map((img, i) => (
               <motion.div
                 key={img.label}
