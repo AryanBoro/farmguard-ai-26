@@ -79,7 +79,7 @@ const TestingSection: React.FC<TestingSectionProps> = ({ onScan }) => {
             Testing Guide
           </motion.p>
           <motion.h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-foreground tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight"
             initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
             animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
