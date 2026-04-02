@@ -99,7 +99,7 @@ const TestingSection: React.FC<TestingSectionProps> = ({ onScan }) => {
 
         {/* Steps */}
         <motion.div
-          className="glass-strong rounded-2xl p-6 sm:p-8 glass-glow"
+          className="glass-strong rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 glass-glow"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
